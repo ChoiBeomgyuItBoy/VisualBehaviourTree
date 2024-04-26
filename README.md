@@ -1,2 +1,5 @@
-# Visual-Behaviour-Tree
-Behaviour Tree Tool using UI Toolkit &amp; GraphView / Unity Editor Scripting
+# Visual Behaviour Tree for Unity
+## Overview:
+ - ...
+## Asset Pack Download:
+ - ...
