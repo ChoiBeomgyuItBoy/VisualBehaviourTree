@@ -38,9 +38,6 @@ namespace RainbowAssets.BehaviourTree.Composites
             return Status.Running;
         }
 
-        protected override void OnExit()
-        {
-            
-        }
+        protected override void OnExit() { }
     }
 }

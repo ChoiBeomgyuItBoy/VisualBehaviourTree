@@ -8,6 +8,11 @@ namespace RainbowAssets.BehaviourTree
         bool started = false;
         protected BehaviourTreeController controller;
 
+        public virtual Node Clone()
+        {
+            return Instantiate(this);
+        }
+
         public void Bind(BehaviourTreeController controller)
         {
             this.controller = controller;

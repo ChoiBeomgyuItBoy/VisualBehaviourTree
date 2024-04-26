@@ -8,6 +8,11 @@ namespace RainbowAssets.BehaviourTree
 
         void Awake()
         {
+            behaviourTree = behaviourTree.Clone();
+        }
+
+        void Start()
+        {
             behaviourTree.Bind(this);
         }
 

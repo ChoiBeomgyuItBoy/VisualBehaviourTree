@@ -7,6 +7,20 @@ namespace RainbowAssets.BehaviourTree
     {
         [SerializeField] List<Node> children = new();
 
+        public override Node Clone()
+        {
+            CompositeNode clone = Instantiate(this);
+
+            clone.children.Clear();
+
+            foreach(var child in children)
+            {
+                clone.children.Add(child.Clone());
+            }
+
+            return clone;
+        }
+
         public IEnumerable<Node> GetChildren()
         {
             return children;

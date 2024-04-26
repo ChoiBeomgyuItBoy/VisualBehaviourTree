@@ -9,6 +9,15 @@ namespace RainbowAssets.BehaviourTree
     {
         [SerializeField] Node rootNode;
 
+        public BehaviourTree Clone()
+        {
+            BehaviourTree clone = Instantiate(this);
+
+            clone.rootNode = rootNode.Clone();
+
+            return clone;
+        }
+
         public void Bind(BehaviourTreeController controller)
         {
             Traverse(rootNode, node => node.Bind(controller));
