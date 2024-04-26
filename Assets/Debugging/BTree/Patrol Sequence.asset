@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Patrol Sequence
   m_EditorClassIdentifier: 
   children:
-  - {fileID: 11400000, guid: c001348cdf7b3e94180393b9fb3caa9e, type: 2}
-  - {fileID: 11400000, guid: c001348cdf7b3e94180393b9fb3caa9e, type: 2}
+  - {fileID: 11400000, guid: f48c1f9f55c96ab42b6c0e3280d1237d, type: 2}

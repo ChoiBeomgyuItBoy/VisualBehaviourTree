@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c77c0598f94b3f4f91cca746a7f996e, type: 3}
   m_Name: Character BTree
   m_EditorClassIdentifier: 
-  rootNode: {fileID: 11400000, guid: 270709cea4b478040beeb680768ab95e, type: 2}
+  rootNode: {fileID: 11400000, guid: 56c699c4460c84445955b1bcfaa9577f, type: 2}

@@ -6,7 +6,7 @@ public class PatrolPath : MonoBehaviour
 
     public int GetNextIndex(int index)
     {
-        if(index == transform.childCount - 1)
+        if (index == transform.childCount - 1)
         {
             return 0;
         }

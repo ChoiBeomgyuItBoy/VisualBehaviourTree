@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RainbowAssets.BehaviourTree
@@ -18,13 +19,33 @@ namespace RainbowAssets.BehaviourTree
             return rootNode.Tick();
         }
 
+        IEnumerable<Node> GetAllChildren(Node node)
+        {
+            CompositeNode compositeNode = node as CompositeNode;
+
+            if (compositeNode != null)
+            {
+                foreach(var child in compositeNode.GetChildren())
+                {
+                    yield return child;
+                }
+            }
+
+            DecoratorNode decoratorNode = node as DecoratorNode;
+
+            if (decoratorNode != null)
+            {
+                yield return decoratorNode.GetChild();
+            }
+        }
+
         void Traverse(Node node, Action<Node> visiter)
         {
             if (node != null)
             {
                 visiter.Invoke(node);
 
-                foreach (var child in node.GetChildren())
+                foreach (var child in GetAllChildren(node))
                 {
                     Traverse(child, visiter);
                 }

@@ -1,11 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace RainbowAssets.BehaviourTree
 {
     public abstract class Node : ScriptableObject
     {
-        [SerializeField] List<Node> children = new();
         Status status = Status.Running;
         bool started = false;
         protected BehaviourTreeController controller;
@@ -13,16 +11,6 @@ namespace RainbowAssets.BehaviourTree
         public void Bind(BehaviourTreeController controller)
         {
             this.controller = controller;
-        }
-
-        public List<Node> GetChildren()
-        {
-            return children;
-        }
-
-        public Node GetChild(int index)
-        {
-            return children[index];
         }
 
         public Status Tick()
