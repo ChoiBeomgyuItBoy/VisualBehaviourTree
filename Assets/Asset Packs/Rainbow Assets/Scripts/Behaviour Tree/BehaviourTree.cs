@@ -51,6 +51,13 @@ namespace RainbowAssets.BehaviourTree
 
             return newNode;
         }
+
+        public void RemoveNode(Node nodeToRemove)
+        {
+            Undo.RecordObject(this, "Node Removed");
+            nodes.Remove(nodeToRemove);
+            Undo.DestroyObjectImmediate(nodeToRemove);
+        }
 #endif
 
         IEnumerable<Node> GetChildren(Node node)

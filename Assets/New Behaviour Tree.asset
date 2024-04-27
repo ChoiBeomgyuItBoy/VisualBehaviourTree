@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3928e589b6b404ea43e81221128b4c, type: 3}
   m_Name: Loop
   m_EditorClassIdentifier: 
-  position: {x: 88, y: 47}
+  position: {x: 72, y: 47}
   child: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b80b585178d2045b1b5f40e1fad244, type: 3}
   m_Name: Sequence
   m_EditorClassIdentifier: 
-  position: {x: 249, y: 47}
+  position: {x: 289, y: 60}
   children: []
 --- !u!114 &7718536059672281161
 MonoBehaviour:

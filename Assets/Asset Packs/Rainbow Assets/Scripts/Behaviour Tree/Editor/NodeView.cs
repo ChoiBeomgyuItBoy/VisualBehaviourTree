@@ -17,6 +17,11 @@ namespace RainbowAssets.BehaviourTree.Editor
             style.top = node.GetPosition().y;
         }
 
+        public Node GetNode()
+        {
+            return node;
+        }
+
         public override void SetPosition(Rect newPos)
         {
             base.SetPosition(newPos);

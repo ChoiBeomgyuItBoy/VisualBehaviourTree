@@ -28,7 +28,11 @@ namespace RainbowAssets.BehaviourTree.Editor
         {
             this.behaviourTree = behaviourTree;
 
+            graphViewChanged -= OnGraphViewChanged;
+
             DeleteElements(graphElements);
+
+            graphViewChanged += OnGraphViewChanged;
 
             if(behaviourTree != null)
             {
@@ -67,6 +71,31 @@ namespace RainbowAssets.BehaviourTree.Editor
         {
             Node newNode = behaviourTree.CreateNode(type);
             CreateNodeView(newNode);
+        }
+
+        void RemoveNode(NodeView nodeView)
+        {
+            behaviourTree.RemoveNode(nodeView.GetNode());
+        }
+
+        GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)
+        {
+            var elementsToRemove = graphViewChange.elementsToRemove;
+
+            if(elementsToRemove != null)
+            {
+                foreach(var element in elementsToRemove)
+                {
+                    NodeView nodeView = element as NodeView;
+
+                    if(nodeView != null)
+                    {
+                        RemoveNode(nodeView);
+                    }
+                }
+            }
+
+            return graphViewChange;
         }
 
         void OnUndoRedo()
