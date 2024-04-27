@@ -352,7 +352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &469400072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c363eb2823b4ef94eb3158a7ee8fd8b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviourTree: {fileID: 11400000, guid: 18a9b4e9b84ff8c4695d1076814e2a77, type: 2}
+  behaviourTree: {fileID: 11400000, guid: eb806e4883390014299ace9f84c367a7, type: 2}
 --- !u!95 &469400075
 Animator:
   serializedVersion: 5
@@ -958,7 +958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &977961392
 Transform:
   m_ObjectHideFlags: 0
@@ -1028,7 +1028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c363eb2823b4ef94eb3158a7ee8fd8b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviourTree: {fileID: 11400000, guid: 18a9b4e9b84ff8c4695d1076814e2a77, type: 2}
+  behaviourTree: {fileID: 11400000, guid: eb806e4883390014299ace9f84c367a7, type: 2}
 --- !u!95 &977961397
 Animator:
   serializedVersion: 5

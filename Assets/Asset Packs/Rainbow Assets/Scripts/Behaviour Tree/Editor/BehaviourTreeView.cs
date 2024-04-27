@@ -1,5 +1,6 @@
 using System;
 using UnityEditor;
+using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.Experimental.GraphView;
 using System.Collections.Generic;
@@ -94,7 +95,9 @@ namespace RainbowAssets.BehaviourTree.Editor
                         continue;
                     }
 
-                    evt.menu.AppendAction($"Create Node/{type.Name} ({type.BaseType.Name})", a => CreateNode(type));
+                    Vector2 mousePosition = viewTransform.matrix.inverse.MultiplyPoint(evt.localMousePosition);
+                    
+                    evt.menu.AppendAction($"Create Node/{type.Name} ({type.BaseType.Name})", a => CreateNode(type, mousePosition));
                 }
             }
         }
@@ -110,9 +113,9 @@ namespace RainbowAssets.BehaviourTree.Editor
             AddElement(nodeView);
         }
 
-        void CreateNode(Type type)
+        void CreateNode(Type type, Vector2 position)
         {
-            Node newNode = behaviourTree.CreateNode(type);
+            Node newNode = behaviourTree.CreateNode(type, position);
             CreateNodeView(newNode);
         }
 

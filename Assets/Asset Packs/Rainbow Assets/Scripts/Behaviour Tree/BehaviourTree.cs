@@ -59,7 +59,7 @@ namespace RainbowAssets.BehaviourTree
         }
 
 #if UNITY_EDITOR
-        public Node CreateNode(Type type)
+        public Node CreateNode(Type type, Vector2 position)
         {
             Node newNode = CreateInstance(type) as Node;
 
@@ -68,6 +68,8 @@ namespace RainbowAssets.BehaviourTree
 
             newNode.name = type.Name;
             newNode.SetUniqueID(Guid.NewGuid().ToString());
+            newNode.SetPosition(position);
+
             nodes.Add(newNode);
 
             return newNode;

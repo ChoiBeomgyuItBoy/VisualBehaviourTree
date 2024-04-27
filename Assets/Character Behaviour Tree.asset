@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3504060091349726291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa6c2b24d86ac04e9da1035890e4e1b, type: 3}
+  m_Name: ActionNode
+  m_EditorClassIdentifier: 
+  uniqueID: 53330bac-1435-4442-bf88-26415319ea00
+  position: {x: 308, y: 204}
+  onEnterActions:
+  - actionID: Reset Local Time
+    parameters: []
+  onTickActions:
+  - actionID: Update Local Time
+    parameters: []
+  onExitActions: []
+  statusConditions:
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: Has Time
+          parameters:
+          - 3
+          negate: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c77c0598f94b3f4f91cca746a7f996e, type: 3}
+  m_Name: Character Behaviour Tree
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: 2209917137342111208}
+  nodes:
+  - {fileID: 2517572453860614731}
+  - {fileID: -3504060091349726291}
+  - {fileID: 2209917137342111208}
+--- !u!114 &2209917137342111208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b80b585178d2045b1b5f40e1fad244, type: 3}
+  m_Name: Sequence
+  m_EditorClassIdentifier: 
+  uniqueID: a3102025-e638-493c-bfa9-e3537be44fbe
+  position: {x: 216.5, y: 69}
+  children:
+  - {fileID: 2517572453860614731}
+  - {fileID: -3504060091349726291}
+--- !u!114 &2517572453860614731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa6c2b24d86ac04e9da1035890e4e1b, type: 3}
+  m_Name: ActionNode
+  m_EditorClassIdentifier: 
+  uniqueID: debe6e44-1077-4a97-932b-673648bca83c
+  position: {x: 111, y: 204}
+  onEnterActions:
+  - actionID: Move To Waypoint
+    parameters: []
+  onTickActions: []
+  onExitActions:
+  - actionID: Cycle Waypoint
+    parameters: []
+  statusConditions:
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: At Waypoint
+          parameters: []
+          negate: 0
