@@ -51,22 +51,6 @@ namespace RainbowAssets.BehaviourTree
 
             return newNode;
         }
-
-        void ISerializationCallbackReceiver.OnBeforeSerialize()
-        {
-            if(AssetDatabase.GetAssetPath(this) != "")
-            {
-                foreach(var node in nodes)
-                {
-                    if(AssetDatabase.GetAssetPath(node) == "")
-                    {
-                        AssetDatabase.AddObjectToAsset(node, this);
-                    }
-                }
-            }
-        }
-
-        void ISerializationCallbackReceiver.OnAfterDeserialize() { }
 #endif
 
         IEnumerable<Node> GetChildren(Node node)
@@ -101,5 +85,23 @@ namespace RainbowAssets.BehaviourTree
                 }
             }
         }
+
+        void ISerializationCallbackReceiver.OnBeforeSerialize()
+        {
+#if UNITY_EDITOR
+            if(AssetDatabase.GetAssetPath(this) != "")
+            {
+                foreach(var node in nodes)
+                {
+                    if(AssetDatabase.GetAssetPath(node) == "")
+                    {
+                        AssetDatabase.AddObjectToAsset(node, this);
+                    }
+                }
+            }
+#endif
+        }
+
+        void ISerializationCallbackReceiver.OnAfterDeserialize() { }
     }
 }
