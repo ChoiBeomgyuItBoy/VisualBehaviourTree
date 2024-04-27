@@ -39,6 +39,13 @@ namespace RainbowAssets.BehaviourTree
             children.Add(child);
             EditorUtility.SetDirty(this);
         }
+
+        public void RemoveChild(Node childToRemove)
+        {
+            Undo.RecordObject(this, "Child removed");
+            children.Remove(childToRemove);
+            EditorUtility.SetDirty(this);
+        }
 #endif
     }
 }

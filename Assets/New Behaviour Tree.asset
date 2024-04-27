@@ -31,7 +31,7 @@ MonoBehaviour:
   m_Name: Loop
   m_EditorClassIdentifier: 
   uniqueID: b413d990-502a-4fbd-896f-570b4469d08d
-  position: {x: 390, y: 8.68}
+  position: {x: 370, y: 17}
   child: {fileID: -429422395052659713}
 --- !u!114 &-5416163418345866782
 MonoBehaviour:
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: Sequence
   m_EditorClassIdentifier: 
   uniqueID: 23973dc9-de30-42ae-894a-03e3f1e39e6f
-  position: {x: 362, y: 142}
+  position: {x: 356.5, y: 137}
   children:
   - {fileID: 8164923376543073736}
   - {fileID: 8170735191845572167}

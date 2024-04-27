@@ -46,6 +46,11 @@ namespace RainbowAssets.BehaviourTree.Editor
                 {
                     foreach(var child in behaviourTree.GetChildren(node))
                     {
+                        if (child == null)
+                        {
+                            continue;
+                        }
+
                         CreateEdge(node, child);
                     }
                 }
@@ -84,12 +89,19 @@ namespace RainbowAssets.BehaviourTree.Editor
 
                 foreach (var type in nodeTypes)
                 {
-                    if (!type.IsAbstract)
+                    if (type.IsAbstract)
                     {
-                        evt.menu.AppendAction($"Create Node/{type.Name} ({type.BaseType.Name})", a => CreateNode(type));
+                        continue;
                     }
+
+                    evt.menu.AppendAction($"Create Node/{type.Name} ({type.BaseType.Name})", a => CreateNode(type));
                 }
             }
+        }
+
+        NodeView GetNodeView(string nodeID)
+        {
+            return GetNodeByGuid(nodeID) as NodeView;
         }
 
         void CreateNodeView(Node node)
@@ -107,11 +119,6 @@ namespace RainbowAssets.BehaviourTree.Editor
         void RemoveNode(NodeView nodeView)
         {
             behaviourTree.RemoveNode(nodeView.GetNode());
-        }
-
-        NodeView GetNodeView(string nodeID)
-        {
-            return GetNodeByGuid(nodeID) as NodeView;
         }
 
         void CreateEdge(Node parent, Node child)
@@ -144,6 +151,29 @@ namespace RainbowAssets.BehaviourTree.Editor
             }
         }
 
+        void RemoveChild(Edge edge)
+        {
+            NodeView parentView = edge.output.node as NodeView;
+            NodeView childView = edge.input.node as NodeView;
+
+            Node parentNode = parentView.GetNode();
+            Node childNode = childView.GetNode();
+
+            DecoratorNode decoratorNode = parentNode as DecoratorNode;
+
+            if (decoratorNode != null)
+            {
+                decoratorNode.UnsetChild();
+            }
+
+            CompositeNode compositeNode = parentNode as CompositeNode;
+
+            if (compositeNode != null)
+            {
+                compositeNode.RemoveChild(childNode);
+            }
+        }
+
         GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)
         {
             var edgesToCreate = graphViewChange.edgesToCreate;
@@ -167,6 +197,13 @@ namespace RainbowAssets.BehaviourTree.Editor
                     if(nodeView != null)
                     {
                         RemoveNode(nodeView);
+                    }
+
+                    Edge edge = element as Edge;
+
+                    if(edge != null)
+                    {
+                        RemoveChild(edge);
                     }
                 }
             }
