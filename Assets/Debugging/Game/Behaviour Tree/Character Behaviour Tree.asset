@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: Character Behaviour Tree
   m_EditorClassIdentifier: 
   rootNode: {fileID: 11400000, guid: 56c699c4460c84445955b1bcfaa9577f, type: 2}
+  nodes:
+  - {fileID: 11400000, guid: 56c699c4460c84445955b1bcfaa9577f, type: 2}
+  - {fileID: 11400000, guid: c184ded9d1ff2774682323bb68430d10, type: 2}
+  - {fileID: 11400000, guid: c91c43e7ae8e08446a4d4b593e75740a, type: 2}

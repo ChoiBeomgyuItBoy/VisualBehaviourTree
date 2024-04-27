@@ -7,6 +7,7 @@ namespace RainbowAssets.BehaviourTree.Editor
     public class BehaviourTreeEditor : EditorWindow
     {
         public const string path = "Assets/Asset Packs/Rainbow Assets/Scripts/Behaviour Tree/Editor/";
+        BehaviourTreeView behaviourTreeView;
 
         [MenuItem("Rainbow Assets/Behaviour Tree Editor")]
         public static void ShowWindow()
@@ -34,6 +35,18 @@ namespace RainbowAssets.BehaviourTree.Editor
 
             VisualTreeAsset visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(path + "BehaviourTreeEditor.uxml");
             visualTree.CloneTree(root);
+
+            behaviourTreeView = root.Q<BehaviourTreeView>();
+        }
+
+        void OnSelectionChange()
+        {
+            BehaviourTree behaviourTree = Selection.activeObject as BehaviourTree;
+
+            if(behaviourTree != null)
+            {
+                behaviourTreeView.Refresh(behaviourTree);
+            }
         }
     }
 }

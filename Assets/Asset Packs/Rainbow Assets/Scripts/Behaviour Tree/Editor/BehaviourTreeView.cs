@@ -19,5 +19,21 @@ namespace RainbowAssets.BehaviourTree.Editor
             this.AddManipulator(new ContentDragger());
             this.AddManipulator(new SelectionDragger());
         }
+
+        public void Refresh(BehaviourTree behaviourTree)
+        {
+            DeleteElements(graphElements);
+
+            foreach(var node in behaviourTree.GetNodes())
+            {
+                CreateNodeView(node);
+            }
+        }
+
+        void CreateNodeView(Node node)
+        {
+            NodeView nodeView = new(node);
+            AddElement(nodeView);
+        }
     }
 }

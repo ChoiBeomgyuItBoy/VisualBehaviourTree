@@ -8,12 +8,16 @@ namespace RainbowAssets.BehaviourTree
     public class BehaviourTree : ScriptableObject
     {
         [SerializeField] Node rootNode;
+        [SerializeField] List<Node> nodes = new();
 
         public BehaviourTree Clone()
         {
             BehaviourTree clone = Instantiate(this);
 
             clone.rootNode = rootNode.Clone();
+            clone.nodes.Clear();
+
+            Traverse(clone.rootNode, node => clone.nodes.Add(node));
 
             return clone;
         }
@@ -23,12 +27,17 @@ namespace RainbowAssets.BehaviourTree
             Traverse(rootNode, node => node.Bind(controller));
         }
 
+        public IEnumerable<Node> GetNodes()
+        {
+            return nodes;
+        }
+
         public Status Tick()
         {
             return rootNode.Tick();
         }
 
-        IEnumerable<Node> GetAllChildren(Node node)
+        IEnumerable<Node> GetChildren(Node node)
         {
             CompositeNode compositeNode = node as CompositeNode;
 
@@ -54,7 +63,7 @@ namespace RainbowAssets.BehaviourTree
             {
                 visiter.Invoke(node);
 
-                foreach (var child in GetAllChildren(node))
+                foreach (var child in GetChildren(node))
                 {
                     Traverse(child, visiter);
                 }
