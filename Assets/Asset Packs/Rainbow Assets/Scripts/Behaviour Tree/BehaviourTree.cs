@@ -38,11 +38,17 @@ namespace RainbowAssets.BehaviourTree
             return rootNode.Tick();
         }
 
+#if UNITY_EDITOR
         public Node CreateNode(Type type)
         {
             Node newNode = CreateInstance(type) as Node;
+
+            Undo.RegisterCreatedObjectUndo(newNode, "Node Created");
+            Undo.RecordObject(this, "Node Added");
+
             newNode.name = type.Name;
             nodes.Add(newNode);
+
             return newNode;
         }
 
@@ -61,6 +67,7 @@ namespace RainbowAssets.BehaviourTree
         }
 
         void ISerializationCallbackReceiver.OnAfterDeserialize() { }
+#endif
 
         IEnumerable<Node> GetChildren(Node node)
         {

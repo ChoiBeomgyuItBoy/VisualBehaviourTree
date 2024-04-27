@@ -20,6 +20,8 @@ namespace RainbowAssets.BehaviourTree.Editor
             this.AddManipulator(new ContentZoomer());
             this.AddManipulator(new ContentDragger());
             this.AddManipulator(new SelectionDragger());
+
+            Undo.undoRedoPerformed += OnUndoRedo;
         }
 
         public void Refresh(BehaviourTree behaviourTree)
@@ -28,9 +30,12 @@ namespace RainbowAssets.BehaviourTree.Editor
 
             DeleteElements(graphElements);
 
-            foreach(var node in behaviourTree.GetNodes())
+            if(behaviourTree != null)
             {
-                CreateNodeView(node);
+                foreach(var node in behaviourTree.GetNodes())
+                {
+                    CreateNodeView(node);
+                }
             }
         }
 
@@ -62,6 +67,11 @@ namespace RainbowAssets.BehaviourTree.Editor
         {
             Node newNode = behaviourTree.CreateNode(type);
             CreateNodeView(newNode);
+        }
+
+        void OnUndoRedo()
+        {
+            Refresh(behaviourTree);
         }
     }
 }

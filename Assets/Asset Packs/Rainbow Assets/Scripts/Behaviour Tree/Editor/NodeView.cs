@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 namespace RainbowAssets.BehaviourTree.Editor
@@ -11,6 +12,21 @@ namespace RainbowAssets.BehaviourTree.Editor
             this.node = node;
             
             title = node.name;
+
+            style.left = node.GetPosition().x;
+            style.top = node.GetPosition().y;
+        }
+
+        public override void SetPosition(Rect newPos)
+        {
+            base.SetPosition(newPos);
+            node.SetPosition(new Vector2(newPos.x, newPos.y));
+        }
+
+        public override void OnSelected()
+        {
+            base.OnSelected();
+            Selection.activeObject = node;
         }
     }
 }
