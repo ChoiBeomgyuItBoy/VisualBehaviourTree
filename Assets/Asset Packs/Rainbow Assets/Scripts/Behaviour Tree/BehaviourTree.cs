@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace RainbowAssets.BehaviourTree
 {
     [CreateAssetMenu(menuName = "New Behaviour Tree")]
-    public class BehaviourTree : ScriptableObject
+    public class BehaviourTree : ScriptableObject, ISerializationCallbackReceiver
     {
         [SerializeField] Node rootNode;
         [SerializeField] List<Node> nodes = new();
@@ -36,6 +37,30 @@ namespace RainbowAssets.BehaviourTree
         {
             return rootNode.Tick();
         }
+
+        public Node CreateNode(Type type)
+        {
+            Node newNode = CreateInstance(type) as Node;
+            newNode.name = type.Name;
+            nodes.Add(newNode);
+            return newNode;
+        }
+
+        void ISerializationCallbackReceiver.OnBeforeSerialize()
+        {
+            if(AssetDatabase.GetAssetPath(this) != "")
+            {
+                foreach(var node in nodes)
+                {
+                    if(AssetDatabase.GetAssetPath(node) == "")
+                    {
+                        AssetDatabase.AddObjectToAsset(node, this);
+                    }
+                }
+            }
+        }
+
+        void ISerializationCallbackReceiver.OnAfterDeserialize() { }
 
         IEnumerable<Node> GetChildren(Node node)
         {

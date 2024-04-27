@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine.UIElements;
 using UnityEditor.Experimental.GraphView;
@@ -7,6 +8,7 @@ namespace RainbowAssets.BehaviourTree.Editor
     public class BehaviourTreeView : GraphView
     {
         new class UxmlFactory : UxmlFactory<BehaviourTreeView, UxmlTraits> { }
+        BehaviourTree behaviourTree;
 
         public BehaviourTreeView()
         {
@@ -22,6 +24,8 @@ namespace RainbowAssets.BehaviourTree.Editor
 
         public void Refresh(BehaviourTree behaviourTree)
         {
+            this.behaviourTree = behaviourTree;
+
             DeleteElements(graphElements);
 
             foreach(var node in behaviourTree.GetNodes())
@@ -30,10 +34,34 @@ namespace RainbowAssets.BehaviourTree.Editor
             }
         }
 
+        public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
+        {
+            if(behaviourTree != null)
+            {
+                base.BuildContextualMenu(evt);
+                
+                var nodeTypes = TypeCache.GetTypesDerivedFrom<Node>();
+
+                foreach(var type in nodeTypes)
+                {
+                    if(!type.IsAbstract)
+                    {
+                        evt.menu.AppendAction($"Create Node/{type.Name} ({type.BaseType.Name})", a => CreateNode(type));
+                    }
+                }
+            }
+        }
+
         void CreateNodeView(Node node)
         {
             NodeView nodeView = new(node);
             AddElement(nodeView);
+        }
+
+        void CreateNode(Type type)
+        {
+            Node newNode = behaviourTree.CreateNode(type);
+            CreateNodeView(newNode);
         }
     }
 }
