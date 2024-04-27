@@ -48,7 +48,10 @@ namespace RainbowAssets.BehaviourTree.Editor
 
         void CreatePorts()
         {
-            inputPort = GetPort(Direction.Input, Port.Capacity.Single);
+            if(node is not RootNode)
+            {
+                inputPort = GetPort(Direction.Input, Port.Capacity.Single);
+            }
 
             if(node is DecoratorNode)
             {

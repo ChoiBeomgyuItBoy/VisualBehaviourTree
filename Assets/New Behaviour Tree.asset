@@ -1,93 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8814388724087254887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fa6c2b24d86ac04e9da1035890e4e1b, type: 3}
-  m_Name: ActionNode
-  m_EditorClassIdentifier: 
-  uniqueID: bfbfa1d7-6cb8-491e-a7c2-2eabcfc97ca1
-  position: {x: 498, y: 303}
-  onEnterActions: []
-  onTickActions: []
-  onExitActions: []
-  statusConditions: []
---- !u!114 &-8432992489689395271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3928e589b6b404ea43e81221128b4c, type: 3}
-  m_Name: Loop
-  m_EditorClassIdentifier: 
-  uniqueID: b413d990-502a-4fbd-896f-570b4469d08d
-  position: {x: 385, y: 22}
-  child: {fileID: -429422395052659713}
---- !u!114 &-6617937771322810706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fa6c2b24d86ac04e9da1035890e4e1b, type: 3}
-  m_Name: ActionNode
-  m_EditorClassIdentifier: 
-  uniqueID: 7f3ae43e-07f8-4c87-96c2-66aef96da2ab
-  position: {x: 206, y: 407}
-  onEnterActions: []
-  onTickActions: []
-  onExitActions: []
-  statusConditions: []
---- !u!114 &-5416163418345866782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fa6c2b24d86ac04e9da1035890e4e1b, type: 3}
-  m_Name: ActionNode
-  m_EditorClassIdentifier: 
-  uniqueID: eb39d7e4-0fc4-4e6d-b97b-225f05ae12bf
-  position: {x: 646, y: 303}
-  onEnterActions: []
-  onTickActions: []
-  onExitActions: []
-  statusConditions: []
---- !u!114 &-2473734570146879469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fa6c2b24d86ac04e9da1035890e4e1b, type: 3}
-  m_Name: ActionNode
-  m_EditorClassIdentifier: 
-  uniqueID: d6a3e760-2e14-4de7-a712-42a249f59f44
-  position: {x: 37, y: 407}
-  onEnterActions: []
-  onTickActions: []
-  onExitActions: []
-  statusConditions: []
---- !u!114 &-429422395052659713
+--- !u!114 &-5928307001253705013
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,13 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b80b585178d2045b1b5f40e1fad244, type: 3}
   m_Name: Sequence
   m_EditorClassIdentifier: 
-  uniqueID: 23973dc9-de30-42ae-894a-03e3f1e39e6f
-  position: {x: 356.5, y: 137}
+  uniqueID: a1bbc921-7450-4d67-aa8a-d6ea75f1c95c
+  position: {x: 218.5, y: 7}
   children:
-  - {fileID: 8170735191845572167}
-  - {fileID: -8814388724087254887}
-  - {fileID: -5416163418345866782}
-  - {fileID: 3930628804687365022}
+  - {fileID: 5492027521162488259}
+  - {fileID: 4380160921954317640}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,34 +29,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c77c0598f94b3f4f91cca746a7f996e, type: 3}
   m_Name: New Behaviour Tree
   m_EditorClassIdentifier: 
-  rootNode: {fileID: 0}
+  rootNode: {fileID: 5325484046162660325}
   nodes:
-  - {fileID: 8170735191845572167}
-  - {fileID: -8814388724087254887}
-  - {fileID: -5416163418345866782}
-  - {fileID: -429422395052659713}
-  - {fileID: -8432992489689395271}
-  - {fileID: 3930628804687365022}
-  - {fileID: -2473734570146879469}
-  - {fileID: -6617937771322810706}
---- !u!114 &3930628804687365022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b80b585178d2045b1b5f40e1fad244, type: 3}
-  m_Name: Sequence
-  m_EditorClassIdentifier: 
-  uniqueID: 9916827b-9da5-4c98-b362-22e4d462452d
-  position: {x: 135, y: 289}
-  children:
-  - {fileID: -2473734570146879469}
-  - {fileID: -6617937771322810706}
---- !u!114 &8170735191845572167
+  - {fileID: 5325484046162660325}
+  - {fileID: -5928307001253705013}
+  - {fileID: 5492027521162488259}
+  - {fileID: 4380160921954317640}
+  rootNodeOffset: {x: 250, y: 0}
+--- !u!114 &4380160921954317640
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,9 +48,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa6c2b24d86ac04e9da1035890e4e1b, type: 3}
   m_Name: ActionNode
   m_EditorClassIdentifier: 
-  uniqueID: 4214da3b-f807-480a-88f8-0f7932dd7b9b
-  position: {x: 332, y: 303}
-  onEnterActions: []
-  onTickActions: []
+  uniqueID: ac066659-e58c-4e4b-a7d0-2cff3d875868
+  position: {x: 305, y: 145}
+  onEnterActions:
+  - actionID: Reset Local Time
+    parameters: []
+  onTickActions:
+  - actionID: Update Local Time
+    parameters: []
   onExitActions: []
-  statusConditions: []
+  statusConditions:
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: Has Time
+          parameters:
+          - 3
+          negate: 0
+--- !u!114 &5325484046162660325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d85566c974f07459aee2e34c869a17, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  uniqueID: 8cea7ecd-6342-4d97-b478-a87c80779f27
+  position: {x: 219, y: -130}
+  child: {fileID: -5928307001253705013}
+--- !u!114 &5492027521162488259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa6c2b24d86ac04e9da1035890e4e1b, type: 3}
+  m_Name: ActionNode
+  m_EditorClassIdentifier: 
+  uniqueID: 5860f05b-5019-4ddb-b89e-5503e8a6213c
+  position: {x: 106, y: 145}
+  onEnterActions:
+  - actionID: Move To Waypoint
+    parameters: []
+  onTickActions: []
+  onExitActions:
+  - actionID: Cycle Waypoint
+    parameters: []
+  statusConditions:
+  - status: 1
+    condition:
+      and:
+      - or:
+        - predicate: At Waypoint
+          parameters: []
+          negate: 0

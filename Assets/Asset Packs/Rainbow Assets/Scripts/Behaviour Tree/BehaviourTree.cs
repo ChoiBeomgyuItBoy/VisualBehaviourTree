@@ -10,6 +10,7 @@ namespace RainbowAssets.BehaviourTree
     {
         [SerializeField] Node rootNode;
         [SerializeField] List<Node> nodes = new();
+        [SerializeField] Vector2 rootNodeOffset = new Vector2(250, 0);
 
         public BehaviourTree Clone()
         {
@@ -61,14 +62,10 @@ namespace RainbowAssets.BehaviourTree
 #if UNITY_EDITOR
         public Node CreateNode(Type type, Vector2 position)
         {
-            Node newNode = CreateInstance(type) as Node;
+            Node newNode = MakeNode(type, position);
 
             Undo.RegisterCreatedObjectUndo(newNode, "Node Created");
             Undo.RecordObject(this, "Node Added");
-
-            newNode.name = type.Name;
-            newNode.SetUniqueID(Guid.NewGuid().ToString());
-            newNode.SetPosition(position);
 
             nodes.Add(newNode);
 
@@ -80,6 +77,17 @@ namespace RainbowAssets.BehaviourTree
             Undo.RecordObject(this, "Node Removed");
             nodes.Remove(nodeToRemove);
             Undo.DestroyObjectImmediate(nodeToRemove);
+        }
+
+        Node MakeNode(Type type, Vector2 position)
+        {
+            Node newNode = CreateInstance(type) as Node;
+            newNode.name = type.Name;
+
+            newNode.SetUniqueID(Guid.NewGuid().ToString());
+            newNode.SetPosition(position);
+
+            return newNode;
         }
 #endif
 
@@ -107,6 +115,12 @@ namespace RainbowAssets.BehaviourTree
                     {
                         AssetDatabase.AddObjectToAsset(node, this);
                     }
+                }
+
+                if (rootNode == null)
+                {
+                    rootNode = MakeNode(typeof(RootNode), rootNodeOffset);
+                    nodes.Add(rootNode);
                 }
             }
 #endif

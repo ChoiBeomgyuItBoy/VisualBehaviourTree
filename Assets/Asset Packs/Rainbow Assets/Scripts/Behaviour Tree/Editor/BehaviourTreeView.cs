@@ -95,8 +95,13 @@ namespace RainbowAssets.BehaviourTree.Editor
                         continue;
                     }
 
+                    if (type == typeof(RootNode))
+                    {
+                        continue;
+                    }
+
                     Vector2 mousePosition = viewTransform.matrix.inverse.MultiplyPoint(evt.localMousePosition);
-                    
+
                     evt.menu.AppendAction($"Create Node/{type.Name} ({type.BaseType.Name})", a => CreateNode(type, mousePosition));
                 }
             }
