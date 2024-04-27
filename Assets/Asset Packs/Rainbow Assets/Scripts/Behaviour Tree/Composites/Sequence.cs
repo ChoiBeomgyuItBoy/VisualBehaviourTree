@@ -1,9 +1,7 @@
 using System.Linq;
-using UnityEngine;
 
 namespace RainbowAssets.BehaviourTree.Composites
 {
-    [CreateAssetMenu(menuName = "Sequence")]
     public class Sequence : CompositeNode
     {
         int currentChildIndex = 0;

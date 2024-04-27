@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 namespace RainbowAssets.BehaviourTree
@@ -19,5 +20,14 @@ namespace RainbowAssets.BehaviourTree
         {
             return child;
         }
+
+#if UNITY_EDITOR
+        public void SetChild(Node child)
+        {
+            Undo.RecordObject(this, "Child Set");
+            this.child = child;
+            EditorUtility.SetDirty(this);
+        }
+#endif
     }
 }   

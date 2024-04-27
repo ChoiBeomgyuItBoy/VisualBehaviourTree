@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace RainbowAssets.BehaviourTree
 {
     public class Loop : DecoratorNode

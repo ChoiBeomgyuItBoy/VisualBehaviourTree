@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace RainbowAssets.BehaviourTree
@@ -30,5 +31,14 @@ namespace RainbowAssets.BehaviourTree
         {
             return children[index];
         }
+
+#if UNITY_EDITOR
+        public void AddChild(Node child)
+        {
+            Undo.RecordObject(this, "Child added");
+            children.Add(child);
+            EditorUtility.SetDirty(this);
+        }
+#endif
     }
 }

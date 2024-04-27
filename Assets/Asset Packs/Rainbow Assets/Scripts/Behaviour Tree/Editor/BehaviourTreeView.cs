@@ -2,6 +2,7 @@ using System;
 using UnityEditor;
 using UnityEngine.UIElements;
 using UnityEditor.Experimental.GraphView;
+using System.Collections.Generic;
 
 namespace RainbowAssets.BehaviourTree.Editor
 {
@@ -34,26 +35,56 @@ namespace RainbowAssets.BehaviourTree.Editor
 
             graphViewChanged += OnGraphViewChanged;
 
-            if(behaviourTree != null)
+            if (behaviourTree != null)
             {
                 foreach(var node in behaviourTree.GetNodes())
                 {
                     CreateNodeView(node);
                 }
+
+                foreach(var node in behaviourTree.GetNodes())
+                {
+                    foreach(var child in behaviourTree.GetChildren(node))
+                    {
+                        CreateEdge(node, child);
+                    }
+                }
             }
+        }
+
+        public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
+        {
+            var compatiblePorts = new List<Port>();
+
+            foreach (var endPort in ports)
+            {
+                if (endPort.direction == startPort.direction)
+                {
+                    continue;
+                }
+
+                if (endPort.node == startPort.node)
+                {
+                    continue;
+                }
+
+                compatiblePorts.Add(endPort);
+            }
+
+            return compatiblePorts;
         }
 
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
-            if(behaviourTree != null)
+            if (behaviourTree != null)
             {
                 base.BuildContextualMenu(evt);
                 
                 var nodeTypes = TypeCache.GetTypesDerivedFrom<Node>();
 
-                foreach(var type in nodeTypes)
+                foreach (var type in nodeTypes)
                 {
-                    if(!type.IsAbstract)
+                    if (!type.IsAbstract)
                     {
                         evt.menu.AppendAction($"Create Node/{type.Name} ({type.BaseType.Name})", a => CreateNode(type));
                     }
@@ -78,11 +109,56 @@ namespace RainbowAssets.BehaviourTree.Editor
             behaviourTree.RemoveNode(nodeView.GetNode());
         }
 
+        NodeView GetNodeView(string nodeID)
+        {
+            return GetNodeByGuid(nodeID) as NodeView;
+        }
+
+        void CreateEdge(Node parent, Node child)
+        {
+            NodeView parentView = GetNodeView(parent.GetUniqueID());
+            NodeView childView = GetNodeView(child.GetUniqueID());
+            AddElement(parentView.ConnectTo(childView));
+        }
+
+        void AddChild(Edge edge)
+        {
+            NodeView parentView = edge.output.node as NodeView;
+            NodeView childView = edge.input.node as NodeView;
+
+            Node parentNode = parentView.GetNode();
+            Node childNode = childView.GetNode();
+
+            DecoratorNode decoratorNode = parentNode as DecoratorNode;
+
+            if (decoratorNode != null)
+            {
+                decoratorNode.SetChild(childNode);
+            }
+
+            CompositeNode compositeNode = parentNode as CompositeNode;
+
+            if (compositeNode != null)
+            {
+                compositeNode.AddChild(childNode);
+            }
+        }
+
         GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)
         {
+            var edgesToCreate = graphViewChange.edgesToCreate;
+
+            if (edgesToCreate != null)
+            {
+                foreach(var edge in edgesToCreate)
+                {
+                    AddChild(edge);
+                }
+            }
+
             var elementsToRemove = graphViewChange.elementsToRemove;
 
-            if(elementsToRemove != null)
+            if (elementsToRemove != null)
             {
                 foreach(var element in elementsToRemove)
                 {

@@ -5,6 +5,7 @@ namespace RainbowAssets.BehaviourTree
 {
     public abstract class Node : ScriptableObject
     {
+        [SerializeField] string uniqueID;
         [SerializeField] Vector2 position;
         Status status = Status.Running;
         bool started = false;
@@ -18,6 +19,16 @@ namespace RainbowAssets.BehaviourTree
         public void Bind(BehaviourTreeController controller)
         {
             this.controller = controller;
+        }
+
+        public string GetUniqueID()
+        {
+            return uniqueID;
+        }
+
+        public void SetUniqueID(string uniqueID)
+        {
+            this.uniqueID = uniqueID;
         }
 
         public Vector2 GetPosition()

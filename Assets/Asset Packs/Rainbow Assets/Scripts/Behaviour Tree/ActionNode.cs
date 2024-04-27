@@ -3,7 +3,6 @@ using RainbowAssets.Utils;
 
 namespace RainbowAssets.BehaviourTree
 {
-    [CreateAssetMenu(menuName = "Action Node")]
     public class ActionNode : Node
     {
         [SerializeField] ActionData[] onEnterActions;
