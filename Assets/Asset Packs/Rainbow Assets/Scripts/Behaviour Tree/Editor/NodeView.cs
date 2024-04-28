@@ -22,6 +22,7 @@ namespace RainbowAssets.BehaviourTree.Editor
             style.top = node.GetPosition().y;
 
             CreatePorts();
+            SetCapabilites();
         }
 
         public Node GetNode()
@@ -44,6 +45,14 @@ namespace RainbowAssets.BehaviourTree.Editor
         {
             base.OnSelected();
             Selection.activeObject = node;
+        }
+
+        void SetCapabilites()
+        {
+            if(node is RootNode)
+            {
+                capabilities -= Capabilities.Deletable;
+            }
         }
 
         void CreatePorts()

@@ -82,7 +82,7 @@ namespace RainbowAssets.BehaviourTree.Editor
 
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
-            if (behaviourTree != null)
+            if (!Application.isPlaying)
             {
                 base.BuildContextualMenu(evt);
                 

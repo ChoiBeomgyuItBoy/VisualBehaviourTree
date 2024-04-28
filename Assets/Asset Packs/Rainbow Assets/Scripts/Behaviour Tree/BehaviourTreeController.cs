@@ -6,6 +6,11 @@ namespace RainbowAssets.BehaviourTree
     {
         [SerializeField] BehaviourTree behaviourTree;
 
+        public BehaviourTree GetBehaviourTree()
+        {
+            return behaviourTree;
+        }
+
         void Awake()
         {
             behaviourTree = behaviourTree.Clone();
