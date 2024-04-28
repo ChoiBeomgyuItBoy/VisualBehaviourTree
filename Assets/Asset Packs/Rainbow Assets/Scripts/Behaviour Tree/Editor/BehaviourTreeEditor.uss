@@ -4,3 +4,24 @@ GridBackground {
     --thick-line-color: rgba(0, 0, 0, 0.5);
     --spacing: 15;
 }
+
+Port > Label {
+    display: none;
+}
+
+.rootNode #input {
+    background-color: rgb(109, 104, 117);
+    min-height: 25px;
+}
+
+.actionNode #input {
+    background-color: rgb(214, 49, 74);
+}
+
+.compositeNode #input {
+    background-color: rgb(94, 183, 116);
+}
+
+.decoratorNode #input {
+    background-color: rgb(105, 125, 204);
+}

@@ -1,6 +1,8 @@
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace RainbowAssets.BehaviourTree.Editor
 {
@@ -10,7 +12,7 @@ namespace RainbowAssets.BehaviourTree.Editor
         Port outputPort;
         Port inputPort;
 
-        public NodeView(Node node)
+        public NodeView(Node node) : base(BehaviourTreeEditor.path + "NodeView.uxml")
         {
             this.node = node;
 
@@ -23,6 +25,8 @@ namespace RainbowAssets.BehaviourTree.Editor
 
             CreatePorts();
             SetCapabilites();
+            SetStyle();
+            BindDescription();
         }
 
         public Node GetNode()
@@ -44,12 +48,16 @@ namespace RainbowAssets.BehaviourTree.Editor
         public override void OnSelected()
         {
             base.OnSelected();
-            Selection.activeObject = node;
+
+            if (node is not RootNode)
+            {
+                Selection.activeObject = node;
+            }
         }
 
         void SetCapabilites()
         {
-            if(node is RootNode)
+            if (node is RootNode)
             {
                 capabilities -= Capabilities.Deletable;
             }
@@ -57,32 +65,67 @@ namespace RainbowAssets.BehaviourTree.Editor
 
         void CreatePorts()
         {
-            if(node is not RootNode)
+            if (node is not RootNode)
             {
                 inputPort = GetPort(Direction.Input, Port.Capacity.Single);
             }
 
-            if(node is DecoratorNode)
+            if (node is DecoratorNode)
             {
                 outputPort = GetPort(Direction.Output, Port.Capacity.Single);
             }
 
-            if(node is CompositeNode)
+            if (node is CompositeNode)
             {
                 outputPort = GetPort(Direction.Output, Port.Capacity.Multi);
             }
-
-            inputContainer.Add(inputPort);
-            outputContainer.Add(outputPort);
         }
 
         Port GetPort(Direction direction, Port.Capacity capacity)
         {
             Port newPort = InstantiatePort(Orientation.Vertical, direction, capacity, typeof(bool));
 
-            newPort.portName = "";
+            if (direction == Direction.Input)
+            {
+                inputContainer.Add(newPort);
+            }
+
+            if (direction == Direction.Output)
+            {
+                outputContainer.Add(newPort);
+            }
 
             return newPort;
+        }
+
+        void SetStyle()
+        {
+            if (node is RootNode)
+            {
+                AddToClassList("rootNode");
+            }
+
+            if (node is DecoratorNode && node is not RootNode)
+            {
+                AddToClassList("decoratorNode");
+            }
+
+            if (node is CompositeNode)
+            {
+                AddToClassList("compositeNode");
+            }
+
+            if (node is ActionNode)
+            {
+                AddToClassList("actionNode");
+            }
+        }
+
+        void BindDescription()
+        {
+            Label descriptionLabel = this.Q<Label>("description");
+            descriptionLabel.bindingPath = "description";
+            descriptionLabel.Bind(new SerializedObject(node));
         }
     }
 }
