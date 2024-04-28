@@ -109,7 +109,7 @@ namespace RainbowAssets.BehaviourTree
 #if UNITY_EDITOR
             if (AssetDatabase.GetAssetPath(this) != "")
             {
-                foreach(var node in nodes)
+                foreach (var node in nodes)
                 {
                     if (AssetDatabase.GetAssetPath(node) == "")
                     {

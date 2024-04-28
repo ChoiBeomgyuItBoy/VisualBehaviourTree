@@ -14,7 +14,7 @@ namespace RainbowAssets.BehaviourTree
 
             clone.children.Clear();
 
-            foreach(var child in children)
+            foreach (var child in children)
             {
                 clone.children.Add(child.Clone());
             }

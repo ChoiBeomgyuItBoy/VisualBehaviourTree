@@ -43,11 +43,11 @@ namespace RainbowAssets.BehaviourTree
 
         Status CheckStatus()
         {
-            foreach(var statusCondition in statusConditions)
+            foreach (var statusCondition in statusConditions)
             {
                 bool success = statusCondition.condition.Check(controller.GetComponents<IPredicateEvaluator>());
 
-                if(success)
+                if (success)
                 {
                     return statusCondition.status;
                 }
@@ -58,9 +58,9 @@ namespace RainbowAssets.BehaviourTree
 
         void DoActions(ActionData[] actions)
         {
-            foreach(var action in controller.GetComponents<IAction>())
+            foreach (var action in controller.GetComponents<IAction>())
             {
-                foreach(var actionData in actions)
+                foreach (var actionData in actions)
                 {
                     action.DoAction(actionData.actionID, actionData.parameters);
                 }

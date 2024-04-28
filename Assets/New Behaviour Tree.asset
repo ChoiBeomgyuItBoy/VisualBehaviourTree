@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: a1bbc921-7450-4d67-aa8a-d6ea75f1c95c
   description: Patrol Sequence
-  position: {x: 162, y: -88}
+  position: {x: 134, y: -81}
   children:
   - {fileID: 5492027521162488259}
   - {fileID: 4380160921954317640}
@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Name: ActionNode
   m_EditorClassIdentifier: 
   uniqueID: ac066659-e58c-4e4b-a7d0-2cff3d875868
-  description: Wait for seconds while waiting for player
-  position: {x: 258, y: 53}
+  description: Wait for seconds
+  position: {x: 252, y: 76}
   onEnterActions:
   - actionID: Reset Local Time
     parameters: []
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 8cea7ecd-6342-4d97-b478-a87c80779f27
   description: 
-  position: {x: 154, y: -220}
+  position: {x: 142, y: -232}
   child: {fileID: -5928307001253705013}
 --- !u!114 &5492027521162488259
 MonoBehaviour:
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 5860f05b-5019-4ddb-b89e-5503e8a6213c
   description: Move to next waypoint
-  position: {x: 52, y: 59}
+  position: {x: 66, y: 77}
   onEnterActions:
   - actionID: Move To Waypoint
     parameters: []

@@ -39,6 +39,31 @@ namespace RainbowAssets.BehaviourTree.Editor
             return outputPort.ConnectTo(child.inputPort);
         }
 
+        public void DrawStatus()
+        {
+            RemoveFromClassList("runningStatus");
+            RemoveFromClassList("successStatus");
+            RemoveFromClassList("failureStatus");
+
+            if (Application.isPlaying)
+            {
+                switch (node.GetStatus())
+                {
+                    case Status.Running:
+                        AddToClassList("runningStatus");
+                        break;
+
+                    case Status.Success:
+                        AddToClassList("successStatus");
+                        break;
+
+                    case Status.Failure:
+                        AddToClassList("failureStatus");
+                        break;
+                }
+            }
+        }
+
         public override void SetPosition(Rect newPos)
         {
             base.SetPosition(newPos);
@@ -105,7 +130,7 @@ namespace RainbowAssets.BehaviourTree.Editor
                 AddToClassList("rootNode");
             }
 
-            if (node is DecoratorNode && node is not RootNode)
+            else if (node is DecoratorNode)
             {
                 AddToClassList("decoratorNode");
             }
@@ -124,8 +149,14 @@ namespace RainbowAssets.BehaviourTree.Editor
         void BindDescription()
         {
             Label descriptionLabel = this.Q<Label>("description");
-            descriptionLabel.bindingPath = "description";
-            descriptionLabel.Bind(new SerializedObject(node));
+
+            descriptionLabel.text = node.GetDescription();
+
+            if (node is not RootNode)
+            {
+                descriptionLabel.bindingPath = "description";
+                descriptionLabel.Bind(new SerializedObject(node));
+            }
         }
     }
 }

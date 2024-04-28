@@ -42,6 +42,16 @@ namespace RainbowAssets.BehaviourTree
             return position;
         }
 
+        public Status GetStatus()
+        {
+            return status;
+        }
+
+        public bool Started()
+        {
+            return started;
+        }
+
 #if UNITY_EDITOR
         public void SetPosition(Vector2 position)
         {

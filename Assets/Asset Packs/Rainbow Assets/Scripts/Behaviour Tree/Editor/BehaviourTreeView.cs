@@ -38,14 +38,14 @@ namespace RainbowAssets.BehaviourTree.Editor
 
             if (behaviourTree != null)
             {
-                foreach(var node in behaviourTree.GetNodes())
+                foreach (var node in behaviourTree.GetNodes())
                 {
                     CreateNodeView(node);
                 }
 
-                foreach(var node in behaviourTree.GetNodes())
+                foreach (var node in behaviourTree.GetNodes())
                 {
-                    foreach(var child in behaviourTree.GetChildren(node))
+                    foreach (var child in behaviourTree.GetChildren(node))
                     {
                         if (child == null)
                         {
@@ -54,6 +54,19 @@ namespace RainbowAssets.BehaviourTree.Editor
 
                         CreateEdge(node, child);
                     }
+                }
+            }
+        }
+
+        public void DrawStatus()
+        {
+            foreach (var node in nodes)
+            {
+                NodeView nodeView = node as NodeView;
+
+                if (nodeView != null)
+                {
+                    nodeView.DrawStatus();
                 }
             }
         }
@@ -188,7 +201,7 @@ namespace RainbowAssets.BehaviourTree.Editor
 
             if (edgesToCreate != null)
             {
-                foreach(var edge in edgesToCreate)
+                foreach (var edge in edgesToCreate)
                 {
                     AddChild(edge);
                 }
@@ -202,7 +215,7 @@ namespace RainbowAssets.BehaviourTree.Editor
                 {
                     NodeView nodeView = element as NodeView;
 
-                    if(nodeView != null)
+                    if (nodeView != null)
                     {
                         RemoveNode(nodeView);
                     }

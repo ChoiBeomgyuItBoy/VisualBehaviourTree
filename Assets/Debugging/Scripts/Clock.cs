@@ -7,12 +7,12 @@ public class Clock : MonoBehaviour, IAction, IPredicateEvaluator
 
     void IAction.DoAction(string actionID, string[] parameters)
     {
-        if(actionID == "Update Local Time")
+        if (actionID == "Update Local Time")
         {
             localTime += Time.deltaTime;
         }
 
-        if(actionID == "Reset Local Time")
+        if (actionID == "Reset Local Time")
         {
             localTime = 0;
         }
@@ -20,7 +20,7 @@ public class Clock : MonoBehaviour, IAction, IPredicateEvaluator
 
     bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
     {
-        if(predicate == "Has Time")
+        if (predicate == "Has Time")
         {
             return localTime >= float.Parse(parameters[0]);
         }

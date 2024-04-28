@@ -20,7 +20,7 @@ namespace RainbowAssets.BehaviourTree.Editor
         {
             BehaviourTree behaviourTree = EditorUtility.InstanceIDToObject(instanceID) as BehaviourTree;
 
-            if(behaviourTree != null)
+            if (behaviourTree != null)
             {
                 ShowWindow();
                 return true;
@@ -43,17 +43,17 @@ namespace RainbowAssets.BehaviourTree.Editor
         {
             BehaviourTree behaviourTree = Selection.activeObject as BehaviourTree;
 
-            if(Selection.activeGameObject)
+            if (Selection.activeGameObject)
             {
                 BehaviourTreeController controller = Selection.activeGameObject.GetComponent<BehaviourTreeController>();
 
-                if(controller != null)
+                if (controller != null)
                 {
                     behaviourTree = controller.GetBehaviourTree();
                 }
             }
 
-            if(behaviourTree != null)
+            if (behaviourTree != null)
             {
                 behaviourTreeView.Refresh(behaviourTree);
             }
@@ -71,19 +71,26 @@ namespace RainbowAssets.BehaviourTree.Editor
 
         void OnPlayModeStateChanged(PlayModeStateChange change)
         {
-            if(behaviourTreeView != null)
+            if (behaviourTreeView != null)
             {
-                if(change == PlayModeStateChange.EnteredEditMode)
+                if (change == PlayModeStateChange.EnteredEditMode)
                 {
                     OnSelectionChange();
                 }
 
-                if(change == PlayModeStateChange.EnteredPlayMode)
+                if (change == PlayModeStateChange.EnteredPlayMode)
                 {
                     OnSelectionChange();
                 }
             }
         }
 
+        void OnInspectorUpdate()
+        {
+            if (behaviourTreeView != null)
+            {
+                behaviourTreeView.DrawStatus();
+            }
+        }
     }
 }
