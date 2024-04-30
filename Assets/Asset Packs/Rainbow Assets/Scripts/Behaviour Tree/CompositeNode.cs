@@ -32,6 +32,11 @@ namespace RainbowAssets.BehaviourTree
             return children[index];
         }
 
+        public void SortChildrenByPosition()
+        {
+            children.Sort(ComparePosition);
+        }
+
 #if UNITY_EDITOR
         public void AddChild(Node child)
         {
@@ -47,5 +52,16 @@ namespace RainbowAssets.BehaviourTree
             EditorUtility.SetDirty(this);
         }
 #endif
+
+        int ComparePosition(Node leftNode, Node rightNode)
+        {
+            if(leftNode.GetPosition().x < rightNode.GetPosition().x)
+            {
+                return -1;
+            }
+
+            return 1;
+        }
+
     }
 }

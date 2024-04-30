@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 9f8eba98-6eea-4f0e-ba88-b140c12718d9
   description: Patrol Sequence
-  position: {x: 324, y: 127}
+  position: {x: 358, y: 154}
   children:
-  - {fileID: -1978600280460987521}
   - {fileID: -2547442349539268976}
   - {fileID: 2342976621854604030}
+  - {fileID: -1978600280460987521}
   - {fileID: 106489623177314006}
 --- !u!114 &-2547442349539268976
 MonoBehaviour:
@@ -34,7 +34,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: b9085f03-528b-4c37-918f-01ba22191123
   description: Wait for 3 seconds
-  position: {x: 247, y: 294}
+  position: {x: 107, y: 295}
   secondsToWait: 3
 --- !u!114 &-1978600280460987521
 MonoBehaviour:
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 1ca29c40-bcd0-4ba1-a8ff-c6a5bcaeec58
   description: Move To Waypoint
-  position: {x: 81, y: 292.84}
+  position: {x: 435, y: 314}
   onEnterActions:
   - actionID: Move To Waypoint
     parameters: []
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: c2e47b55-69af-4855-838e-36eeedab6b61
   description: Wait for 5 seconds
-  position: {x: 622, y: 294}
+  position: {x: 617, y: 287}
   secondsToWait: 5
 --- !u!114 &2342976621854604030
 MonoBehaviour:
@@ -133,5 +133,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 917b42ee-715b-4935-92ba-dc18ee18564f
   description: Print Hello
-  position: {x: 428, y: 292}
+  position: {x: 271, y: 334}
   message: Hello!
