@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace RainbowAssets.BehaviourTree
 {
-    public class WaitForSeconds : ActionNode
+    public class Wait : ActionNode
     {
         [SerializeField] float secondsToWait = 3;
         float localTime = 0;
