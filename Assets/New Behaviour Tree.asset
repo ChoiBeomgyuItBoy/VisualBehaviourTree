@@ -31,8 +31,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 9f8eba98-6eea-4f0e-ba88-b140c12718d9
   description: Patrol Sequence
-  position: {x: 261.45004, y: 179.3}
-  priority: 0
+  position: {x: 264, y: 180.51749}
+  priority: 5
   children:
   - {fileID: 2393848158086861159}
   - {fileID: -3778647134888744114}
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: 75e06fcd-54ba-4bf7-998c-701c8cf6b2b9
   description: Behaviour Selector
-  position: {x: 499.7001, y: 0.2999878}
+  position: {x: 498.00006, y: 5.7}
   priority: 0
   children:
   - {fileID: -6607702929741769104}
@@ -125,7 +125,7 @@ MonoBehaviour:
   - {fileID: 6175256077395601957}
   abortCondition:
     and: []
-  selectionType: 2
+  selectionType: 1
 --- !u!114 &2393848158086861159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,8 +171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: e34b34e4-6305-491c-9597-e41adebe9fa0
   description: 
-  position: {x: 580, y: 183.7}
-  priority: 0
+  position: {x: 586, y: 187}
+  priority: 3
   child: {fileID: -7349323616766972371}
   abortCondition:
     and: []
@@ -207,8 +207,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: bdd48cdd-0ebe-47af-a5ae-682f1b48740f
   description: 
-  position: {x: 770.05005, y: 181.60002}
-  priority: 0
+  position: {x: 786, y: 192}
+  priority: 2
   child: {fileID: 5881692007639371238}
   abortCondition:
     and: []

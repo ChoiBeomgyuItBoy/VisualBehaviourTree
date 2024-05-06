@@ -62,9 +62,8 @@ namespace RainbowAssets.BehaviourTree
         }
 #endif
 
-        public void Abort()
+        public virtual void Abort()
         {
-            OnExit();
             started = false;
             status = Status.Failure;
         }
