@@ -59,6 +59,7 @@ MonoBehaviour:
   description: 
   position: {x: 758, y: 14}
   priority: 0
+  defaultStatus: 0
   onEnterActions: []
   onTickActions: []
   onExitActions: []
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c77c0598f94b3f4f91cca746a7f996e, type: 3}
-  m_Name: New Behaviour Tree
+  m_Name: Test
   m_EditorClassIdentifier: 
   rootNode: {fileID: -390737313866270985}
   nodes:
@@ -191,6 +192,7 @@ MonoBehaviour:
   description: Move To Waypoint
   position: {x: 166.57402, y: 336.00003}
   priority: 0
+  defaultStatus: 0
   onEnterActions:
   - actionID: Move To Waypoint
     parameters: []
